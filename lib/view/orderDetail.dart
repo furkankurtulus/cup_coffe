@@ -462,6 +462,8 @@ class _OrderDetailState extends State<OrderDetail> {
               MaterialPageRoute(
                 builder: (context) => CartDetail(
                   coffeeId: 1,
+                  coffeeSize: orderSize,
+                  coffeeCount: int.parse(controller.text),
                 ),
               ),
             );

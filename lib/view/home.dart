@@ -2,6 +2,7 @@
 
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cup_coffe/view/cafeDetail.dart';
 import 'package:cup_coffe/view/orderDetail.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
@@ -502,54 +503,67 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.width / 25),
         child: Column(
           children: [
-            ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                child: Stack(
-                  children: <Widget>[
-                    Image.asset(
-                      "lib/assets/png/cafe1.png",
-                      fit: BoxFit.cover,
-                      height: MediaQuery.of(context).size.height / 5,
-                      width: MediaQuery.of(context).size.width / 2.2,
-                    ),
-                    Positioned(
-                      top: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.black, Colors.black.withOpacity(0)],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
+            InkWell(
+              child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  child: Stack(
+                    children: <Widget>[
+                      Image.asset(
+                        "lib/assets/png/cafe1.png",
+                        fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height / 5,
+                        width: MediaQuery.of(context).size.width / 2.2,
+                      ),
+                      Positioned(
+                        top: 0.0,
+                        right: -10.0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(100.0)),
+                            gradient: LinearGradient(
+                              colors: [Color.fromRGBO(255, 255, 255, 0.25), Color.fromARGB(40, 255, 255, 255)],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Row(
+                                  // ignore: prefer_const_literals_to_create_immutables
+                                  children: [
+                                    Icon(
+                                      Icons.access_time,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      '1.5 km',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              // ignore: prefer_const_literals_to_create_immutables
-                              children: [
-                                Icon(
-                                  Icons.access_time,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  '1.5 km',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
                       ),
-                    ),
-                  ],
-                )),
+                    ],
+                  )),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CafeDetail(),
+                  ),
+                );
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
