@@ -2,6 +2,7 @@
 
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cup_coffe/view/cafeProducts.dart';
 import 'package:cup_coffe/view/cartDetail.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
@@ -161,7 +162,8 @@ class _CafeDetailState extends State<CafeDetail> {
               ),
             ),
           ),
-          googleMap()
+          googleMap(),
+          viewProducts(),
         ],
       ),
     );
@@ -170,13 +172,55 @@ class _CafeDetailState extends State<CafeDetail> {
   Widget googleMap() {
     const LatLng source = LatLng(40.222462, 28.858865);
     return Container(
-      height: 100,
-      width: 100,
+      height: MediaQuery.of(context).size.height / 4,
+      width: MediaQuery.of(context).size.width / 1 * 1,
       child: GoogleMap(
           initialCameraPosition: CameraPosition(
         target: source,
         zoom: 4,
       )),
+    );
+  }
+
+  Widget viewProducts() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        InkWell(
+          child: Container(
+              width: MediaQuery.of(context).size.width / 1.3,
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                gradient: LinearGradient(
+                  colors: [Color.fromRGBO(49, 77, 69, 1), Color.fromRGBO(49, 77, 69, 1)],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                ),
+              ),
+              child: Text(
+                textAlign: TextAlign.center,
+                "View products",
+                style: GoogleFonts.poppins(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              )),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CafeProducts(),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

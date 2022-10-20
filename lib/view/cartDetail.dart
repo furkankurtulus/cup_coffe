@@ -82,7 +82,9 @@ class _CartDetailState extends State<CartDetail> {
             fontSize: 16,
           ),
         ),
-        SizedBox()
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 10,
+        )
       ],
     );
   }

@@ -250,7 +250,7 @@ class _HomePageState extends State<HomePage> {
             ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 child: InkWell(
-                  onLongPress: () {
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

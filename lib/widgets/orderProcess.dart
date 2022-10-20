@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../model/order.dart';
 import '../service/firevbase_service.dart';
+import '../view/home.dart';
 import '../viewmodel/order_viewmodel.dart';
 
 class OrderProcess extends StatefulWidget {
@@ -25,6 +26,7 @@ class _OrderProcessState extends State<OrderProcess> {
 
   void initState() {
     _orderViewModel = OrderViewModel(FirebaseService());
+
     super.initState();
     // getConnectData();
 
