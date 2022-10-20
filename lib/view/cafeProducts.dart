@@ -1,15 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bottom_bar/bottom_bar.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cup_coffe/service/firevbase_service.dart';
-import 'package:cup_coffe/view/cartDetail.dart';
 import 'package:cup_coffe/viewmodel/order_viewmodel.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import '../utility/dotIndicator.dart';
 
 class CafeProducts extends StatefulWidget {
@@ -29,7 +24,6 @@ class _CafeProductsState extends State<CafeProducts> with SingleTickerProviderSt
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
-
     super.initState();
   }
 
@@ -293,9 +287,5 @@ class _CafeProductsState extends State<CafeProducts> with SingleTickerProviderSt
         ),
       );
     });
-  }
-
-  Future<void> getProducts() async {
-    await _orderViewModel.getProducts();
   }
 }

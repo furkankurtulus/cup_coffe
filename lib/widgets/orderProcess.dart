@@ -28,11 +28,9 @@ class _OrderProcessState extends State<OrderProcess> {
     _orderViewModel = OrderViewModel(FirebaseService());
 
     super.initState();
-    // getConnectData();
 
     Timer(Duration(seconds: 2), () async {
       createOrder();
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     });
   }
 

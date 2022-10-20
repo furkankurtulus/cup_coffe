@@ -4,12 +4,15 @@ import 'package:cup_coffe/model/product.dart';
 import 'package:flutter/foundation.dart';
 
 class FirebaseService {
-  CollectionReference _productsDoc = FirebaseFirestore.instance.collection('products');
+  List<DocumentSnapshot> templist = [];
+  List<Map<String, dynamic>> list = [];
+  ObserverList<Product> model = ObserverList<Product>();
+  CollectionReference collectionRef = FirebaseFirestore.instance.collection("products");
+  final firebaseDoc = FirebaseFirestore.instance.collection("order").doc();
 
   Future<bool> createOrder(Order model) async {
     bool success = false;
     try {
-      final firebaseDoc = FirebaseFirestore.instance.collection("order").doc();
       await firebaseDoc.set(model.toJson());
     } catch (exception) {
       success = false;
@@ -20,14 +23,10 @@ class FirebaseService {
   }
 
   Future<ObserverList<Product>> getProducts() async {
-    List<DocumentSnapshot> templist;
-    List<Map<String, dynamic>> list = [];
-    ObserverList<Product> model = ObserverList<Product>();
-    CollectionReference collectionRef = FirebaseFirestore.instance.collection("products");
-    QuerySnapshot collectionSnapshot = await collectionRef.get(); // <--- This method is now get().
-    templist = collectionSnapshot.docs; // <--- ERROR
+    QuerySnapshot collectionSnapshot = await collectionRef.get();
+    templist = collectionSnapshot.docs;
     list = templist.map((DocumentSnapshot docSnapshot) {
-      return docSnapshot.data() as Map<String, dynamic>; // <--- Typecast this.
+      return docSnapshot.data() as Map<String, dynamic>;
     }).toList();
     for (Map<String, dynamic> i in list.toList()) {
       model.add(Product.fromJson(i));

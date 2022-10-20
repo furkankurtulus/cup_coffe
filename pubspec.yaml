@@ -41,7 +41,9 @@ dependencies:
   firebase_core:
   google_maps_flutter: ^2.2.1
 
-
+ #Utilities
+  flutter_map: ^3.0.0
+  latlong2: ^0.8.0
 
   cupertino_icons: ^1.0.2
 
